@@ -45,6 +45,8 @@ public class InstallZipTest extends SWTBotEclipseTestCase {
 		String timeoutPropertyValue = System.getProperty(InstallTest.INSTALLATION_TIMEOUT_IN_MINUTES_PROPERTY);
 		if (timeoutPropertyValue != null) {
 			installationTimeout = Integer.parseInt(timeoutPropertyValue) * 60000;
+		} else {
+			installationTimeout = 60000;
 		}
 	}
 
