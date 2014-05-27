@@ -280,6 +280,9 @@ if(osName.contains("mac")){
 	if(iniFile == null){
 	iniFile = new File(eclipseHome.getAbsolutePath() + "/JBoss Developer Studio.app/Contents/MacOS").listFiles().find({it.getName().endsWith(".ini")});
 	}
+	if(iniFile == null){
+	iniFile = new File(eclipseHome.getAbsolutePath() + "/jbdevstudio.app/Contents/MacOS").listFiles().find({it.getName().endsWith(".ini")});
+	}
 }else{
 	iniFile = eclipseHome.listFiles().find({it.getName().endsWith(".ini")});
 }
