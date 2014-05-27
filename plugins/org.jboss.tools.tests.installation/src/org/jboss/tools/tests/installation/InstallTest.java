@@ -207,7 +207,7 @@ public class InstallTest extends SWTBotEclipseTestCase {
 				restartShellBot.button("Not Now").click();
 			}
 		} catch (Exception ex) {
-
+			ex.printStackTrace();
 			String installDesc = bot.text().getText();
 			if (installDesc == null || installDesc.isEmpty()) {
 				throw new RuntimeException("Internal error", ex);
