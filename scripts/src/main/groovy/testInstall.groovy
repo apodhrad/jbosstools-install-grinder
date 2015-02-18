@@ -183,7 +183,7 @@ void installFromCentral(String discoveryDirectoryUrl, File eclipseHome, String p
   String discoverySiteUrl=discoveryDirectoryUrl.substring(0,discoveryDirectoryUrl.lastIndexOf("/")+1);
   Collection<String >additionalVMArgs = [];
   additionalVMArgs.add("-Djboss.discovery.directory.url=" + discoveryDirectoryUrl);
-  additionalVMArgs.add("-Djboss.discovery.site.url=" + discoverySiteUrl);
+  additionalVMArgs.add("-Djboss.discovery.site.integration-stack.url=" + discoverySiteUrl);
   if (System.properties['EXCLUDE_CONNECTORS'] != null) {
      additionalVMArgs.add("-Dorg.jboss.tools.tests.installFromCentral.excludeConnectors=" + System.properties['EXCLUDE_CONNECTORS'])  
   } else if (!connectorsToExclude.isEmpty()) {
