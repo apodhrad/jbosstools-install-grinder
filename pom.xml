@@ -19,5 +19,6 @@
 		<module>plugins/org.jboss.tools.tests.installation</module>
 		<module>repository</module>
 		<module>scripts</module>
+		<module>tests/org.jboss.tools.tests.installation.test</module>
 	</modules> 
 </project>

@@ -24,4 +24,8 @@ public class InstallFailureException extends Exception {
 		super(details);
 	}
 
+	public InstallFailureException(String details, Throwable cause) {
+		super(details, cause);
+	}
+
 }

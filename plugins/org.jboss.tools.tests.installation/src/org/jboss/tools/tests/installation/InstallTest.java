@@ -23,6 +23,7 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -48,6 +49,9 @@ public class InstallTest extends SWTBotEclipseTestCase {
 	public static final String INSTALLATION_TIMEOUT_IN_MINUTES_PROPERTY = "INSTALLATION_TIMEOUT_IN_MINUTES";
 
 	private static int installationTimeout = 60 * 60000;
+	
+	@Rule
+	public ImprovedErrorMessages improvedErrorMessage = new ImprovedErrorMessages();
 
 	@BeforeClass
 	public static void setUpBeforeClass() {
@@ -84,11 +88,16 @@ public class InstallTest extends SWTBotEclipseTestCase {
 		this.bot.shell("Add Repository").activate().setFocus();
 		this.bot.text(1).setText(site);
 		this.bot.button("OK").click();
-		this.bot.shell("Install").activate().setFocus();
 		this.bot.waitWhile(new ICondition() {
 
 			@Override
 			public boolean test() throws Exception {
+				try {
+					bot.shell("Error Contacting Site");
+					throw new InstallFailureException(bot.label().getText());
+				} catch (Exception e) {
+					bot.shell("Install").activate().setFocus();
+				}
 				return bot.tree().getAllItems()[0].getText().startsWith("Pending...");
 			}
 
